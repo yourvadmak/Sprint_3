@@ -20,7 +20,7 @@ class OnlineSalesRegisterCollector:
             'кефир': 10
         }
 
-    # 1. Геттеры
+    #1
     @property
     def name_items(self):
         return self.__name_items
@@ -29,7 +29,7 @@ class OnlineSalesRegisterCollector:
     def number_items(self):
         return self.__number_items
 
-    # 2. Добавление товара в чек
+    #2
     def add_item_to_cheque(self, name):
         if len(name) == 0 or len(name) > 40:
             raise ValueError(
@@ -42,7 +42,7 @@ class OnlineSalesRegisterCollector:
         self.__name_items.append(name)
         self.__number_items += 1
 
-    # 3. Удаление товара из чека
+    #3
     def delete_item_from_check(self, name):
         if name not in self.__name_items:
             raise NameError('Позиция отсутствует в чеке')
@@ -50,7 +50,7 @@ class OnlineSalesRegisterCollector:
         self.__name_items.remove(name)
         self.__number_items -= 1
 
-    # 4. Расчёт общей суммы чека
+    #4
     def check_amount(self):
         total = []
 
@@ -64,7 +64,7 @@ class OnlineSalesRegisterCollector:
 
         return amount
 
-    # 5. НДС для товаров со ставкой 20%
+    #5
     def twenty_percent_tax_calculation(self):
         twenty_percent_tax = []
         total = []
@@ -83,7 +83,7 @@ class OnlineSalesRegisterCollector:
 
         return tax
 
-    # 6. НДС для товаров со ставкой 10%
+    #6
     def ten_percent_tax_calculation(self):
         ten_percent_tax = []
         total = []
@@ -102,14 +102,14 @@ class OnlineSalesRegisterCollector:
 
         return tax
 
-    # 7. Общая сумма налогов
+    #7
     def total_tax(self):
         return (
             self.ten_percent_tax_calculation() +
             self.twenty_percent_tax_calculation()
         )
 
-    # 8. Номер телефона покупателя
+    #8
     @staticmethod
     def get_telephone_number(telephone_number):
         if not isinstance(telephone_number, int):
@@ -119,7 +119,3 @@ class OnlineSalesRegisterCollector:
             raise ValueError('Необходимо ввести 10 цифр после "+7"')
 
         return f'+7{telephone_number}'
-    
-    
-
-
